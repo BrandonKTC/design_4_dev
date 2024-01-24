@@ -29,7 +29,7 @@ ul {
   left: 50vw;
   border-radius: 50%;
   background: radial-gradient(circle at bottom right, #fb2324, #fe932a);
-  animation-name: move-like-a-square;
+  animation-name: move-like-a-square, red-to-green;
   animation-duration: 4s;
   animation-fill-mode: both;
   animation-iteration-count: infinite;
@@ -49,5 +49,14 @@ ul {
   }
   75% {
     transform: translateX(0) translateY(20vw);
+  }
+}
+
+@keyframes red-to-green {
+  from {
+    background: #fb2324;
+  }
+  to {
+    background: #00ff00;
   }
 }
