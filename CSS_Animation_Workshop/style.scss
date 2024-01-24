@@ -1,7 +1,7 @@
-@import './styles/base.scss';
+@import "./styles/base.scss";
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 5vmin;
   background-color: #f4f4f4;
 }
@@ -26,6 +26,25 @@ ul {
 .ball {
   height: 5vmin;
   width: 5vmin;
+  left: 50vw;
   border-radius: 50%;
   background: radial-gradient(circle at bottom right, #fb2324, #fe932a);
+  animation-name: move-like-a-square;
+  animation-duration: 4s;
+}
+
+@keyframes move-like-a-square {
+  from,
+  to {
+    transform: none;
+  }
+  25% {
+    transform: translateX(20vw);
+  }
+  50% {
+    transform: translateX(20vw) translateY(20vw);
+  }
+  75% {
+    transform: translateX(0) translateY(20vw);
+  }
 }
