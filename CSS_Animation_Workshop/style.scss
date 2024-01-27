@@ -6,12 +6,29 @@ body {
   background-color: #f4f4f4;
 }
 
+#app {
+  --opacity: 1;
+  --bg: #fff;
+
+  &[data-state="loading"] {
+    --bg: #fe932a;
+    --opacity: 0.5;
+  }
+  &[data-state="success"] {
+    --opacity: 1;
+    --bg: #00ff00;
+  }
+
+  background: var(--bg);
+}
+
 a {
   color: blue;
 }
 
 h1 {
   margin: 0;
+  opacity: var(--opacity);
 }
 
 small {
@@ -29,20 +46,26 @@ ul {
   left: 50vw;
   border-radius: 50%;
   background: radial-gradient(circle at bottom right, #fb2324, #fe932a);
+}
 
-  --duration: 1s;
-  --stagger: 0.5s;
-  --interval: calc(var(--duration) - var(--stagger));
-  animation: move-right var(--duration) calc(var(--interval) * var(--i)) both;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
+.button {
+  appearance: none;
+  background: #0000ff;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 2rem 3rem;
+  border: none;
+  transition: all 0.3s;
+  opacity: var(--opacity);
 
-  // &:nth-child(2) {
-  //   animation-delay: var(--duration) - var(--stagger);
-  // }
-  // &:nth-child(3) {
-  //   animation-delay: calc(var(--duration) * 2 - var(--stagger) * 2);
-  // }
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    transform: translateY(20%);
+    opacity: 1;
+  }
 }
 
 @keyframes move-right {

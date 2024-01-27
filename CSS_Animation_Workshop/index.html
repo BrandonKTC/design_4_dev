@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.scss" />
   </head>
   <body>
-    <div id="app">
+    <div id="app" data-state="loading">
       <small>Frontend Masters</small>
       <h1>CSS Animation Workshop</h1>
       <ul>
@@ -27,11 +27,34 @@
         <li><a href="/06-reactive/">Reactive Animations</a></li>
         <li><a href="/examples/inflight/">Inflight Example</a></li>
       </ul>
-      <div class="container">
-        <div class="ball" style="--i: 0;"></div>
-        <div class="ball" style="--i: 1;"></div>
-        <div class="ball" style="--i: 2;"></div>
-      </div>
+      <!-- <div class="ball"></div> -->
+      <button class="button">Click me</button>
     </div>
   </body>
+  <script>
+    const appEl = document.querySelector("#app");
+    const buttonEl = document.querySelector(".button");
+
+    const machine = {
+      initial: "start",
+      states: {
+        start: {
+          on: { CLICK: "loading" },
+        },
+        loading: {
+          on: { CLICK: "success" },
+        },
+        success: {
+          on: { CLICK: "loading" },
+        },
+      },
+    };
+
+    buttonEl.addEventListener("click", () => {
+      const currentState = appEl.dataset.state ?? machine.initial;
+      const nextState =
+        machine.states[currentState].on["CLICK"] ?? currentState;
+      appEl.dataset.state = nextState;
+    });
+  </script>
 </html>
