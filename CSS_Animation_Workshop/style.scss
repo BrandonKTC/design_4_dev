@@ -1,0 +1,78 @@
+@import "./styles/base.scss";
+
+body {
+  font-family: "Open Sans", sans-serif;
+  padding: 5vmin;
+  background-color: #f4f4f4;
+}
+
+#app {
+  --opacity: 1;
+  --bg: #fff;
+
+  &[data-state="loading"] {
+    --bg: #fe932a;
+    --opacity: 0.5;
+  }
+  &[data-state="success"] {
+    --opacity: 1;
+    --bg: #00ff00;
+  }
+
+  background: var(--bg);
+}
+
+a {
+  color: blue;
+}
+
+h1 {
+  margin: 0;
+  opacity: var(--opacity);
+}
+
+small {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+ul {
+  margin: 1rem 0;
+}
+
+.ball {
+  height: 5vmin;
+  width: 5vmin;
+  left: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(circle at bottom right, #fb2324, #fe932a);
+}
+
+.button {
+  appearance: none;
+  background: #0000ff;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 2rem 3rem;
+  border: none;
+  transition: all 0.3s;
+  opacity: var(--opacity);
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    transform: translateY(20%);
+    opacity: 1;
+  }
+}
+
+@keyframes move-right {
+  from {
+    transform: none;
+  }
+  to {
+    transform: translateX(25vw);
+  }
+}
